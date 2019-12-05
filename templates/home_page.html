@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+</head>
+   <body>
+       <b><a href='/group_contact/{{user}}'>添加团体预约</a></b>
+       <b><a href='/single_contact/{{user}}'>添加个人预约</a></b>
+       <b><a href='/'>注销</a></b>
+       <table  border=1>
+        <caption>预约记录</caption>
+        <tr>
+            <td>序号</td>
+            <td>团体名称</td>
+            <td>姓名</td>
+            <td>手机号码</td>
+            <td>预约人数</td>
+            <td>预约时间</td>
+        </tr>
+            {% for i in range(b) %}
+            <tr>
+            <td>{{i+1}}</td>
+            <td>{{group_name[i]}}</td>
+            <td>{{name[i]}}</td>
+            <td>{{cellphone[i]}}</td>
+            <td>{{num[i]}}</td>
+            <td>{{date[i]}}</td>
+            <td><a href="/cancel/{{user}}/{{i}}">取消预约</a></td>
+            </tr>
+            {% endfor %}
+        </tr>
+        </table>
+    
+
+   </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎登陆</title>
+</head>
+<body>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+           {% for message in messages %}
+              <li>{{ message }}</li>
+           {% endfor %}
+        </ul>
+        {% endif %}
+     {% endwith %}
+    <h2>欢迎登陆</h2>
+    <form action='' method="POST">
+        <table>
+            <tr>
+                <label for="username">用户名</label>
+                <td><input type="text" name='username' placeholder="Username"></td>
+            </tr>
+            <tr>
+                <label for="password">密码</label>
+                <td><input type="password" name='password' placeholder="Password"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="用户登录" formaction="http://localhost:5000/user"></td>    
+            </tr>
+            <tr>
+                <td><input type="submit" value="管理员登录" formaction="http://localhost:5000/admin"></td>    
+            </tr>
+        </table>
+    </form>
+    <a href='/registered'>注册</a>
+</body>
+</html>

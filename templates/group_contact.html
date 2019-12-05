@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>填写您的信息</title>
+</head>
+   <body>
+
+     <h2 style = "text-align: center;">预约信息</h2>
+
+      {% for message in group_form.group_name.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      {% for message in group_form.name.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      <form action = "http://localhost:5000/group_contact/g_recordings/{{user}}" method = post>
+         <fieldset>
+            <legend>填写项</legend>
+            {{ group_form.hidden_tag() }}
+
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+               {{ group_form.group_name.label }}<br>
+               {{ group_form.group_name }}
+               <br>
+               {{ group_form.name.label }}<br>
+               {{ group_form.name }}
+               <br>
+
+
+               {{ group_form.cellphone.label }}<br>
+               {{ group_form.cellphone }}
+               <br>
+
+               {{ group_form.people_num.label }}<br>
+               {{ group_form.people_num }}
+               <br>
+               {{ group_form.time.label }}
+               <p>{{ group_form.year }}{{ group_form.year.label }}{{ group_form.month }}{{ group_form.month.label }}{{ group_form.date }}{{ group_form.date.label }}{{ group_form.time }}</p>
+            
+               <input type="submit" value="预约" />
+               <b><a href='/user'>返回</a></b>
+
+            </div>
+         </fieldset>
+      </form>
+      <!--弹出窗口
+          <script>
+            function openWin(){
+               myWindow=window.open('','','height=100, width=400, top=300, left=550, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no');
+               myWindow.document.write("<TITLE>预约成功</TITLE>") 
+               myWindow.document.write("<p>您已成功预约</p>");
+               myWindow.focus();
+            }
+         </script>
+        -->
+
+   </body>
+</html>

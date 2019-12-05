@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>填写您的信息</title>
+</head>
+   <body>
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            {% for message in messages %}
+               {{ message }}
+            {% endfor %}
+         {% endif %}
+      {% endwith %}
+      
+
+     <h2 style = "text-align: center;">预约信息</h2>
+
+      {% for message in single_form.name.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      {% for message in single_form.cellphone.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      <form action='http://localhost:5000/single_contact/s_recordings/{{user}}' method = post>
+         <fieldset>
+            <legend>填写项</legend>
+            {{ single_form.hidden_tag() }}
+
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+               {{ single_form.name.label }}<br>
+               {{ single_form.name }}
+               <br>
+
+
+               {{ single_form.cellphone.label }}<br>
+               {{ single_form.cellphone }}
+               <br>
+
+               {{ single_form.people_num.label }}<br>
+               {{ single_form.people_num }}
+               <br>
+               
+
+
+               {{ single_form.time.label }}
+               <p>{{ single_form.year }}{{ single_form.year.label }}{{ single_form.month }}{{ single_form.month.label }}{{ single_form.date }}{{ single_form.date.label }}{{ single_form.time }}</p>
+            
+               <input type="submit" value="预约" />
+               <b><a href='/user'>返回</a></b>
+
+            </div>
+         </fieldset>
+      </form>
+      <!--<script>
+            function openWin(){
+               myWindow=window.open('','','height=100, width=400, top=300, left=550, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no');
+               myWindow.document.write("<TITLE>预约成功</TITLE>") 
+               myWindow.document.write("<p>您已成功预约</p>");
+               myWindow.focus();
+            }
+         </script>
+      -->
+
+   </body>
+</html>
